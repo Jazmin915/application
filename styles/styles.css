@@ -6,3 +6,29 @@
 /*p {*/
 /*    background-color: pink;*/
 /*}*/
+
+h2 {
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: darkolivegreen;
+    border: darkolivegreen;
+    border-radius: 5px;
+}
+
+img.img-responsive{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}*
+
+
+.content{
+    padding-left: 50px;
+}
+
+.reviews{
+    font-style: italic;
+    margin-left: 30px;
+}
