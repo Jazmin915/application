@@ -1,8 +1,14 @@
+<!--
+Author: Jazmin Gonzalez
+Date: 1/20/23
+File: index.php
+Description: this is my controller for the application project-->
+
 <?php
-// This is my CONTROLLER for the hello project
 
 // Turn on error reporting
 ini_set('display_errors', 1);
+
 error_reporting(E_ALL);
 
 // Require the autoload file
