@@ -28,6 +28,16 @@ $f3->route('GET /', function () {
     echo $view->render("views/home.html");
 });
 
+// Define route ("personal info page" for 328/application/personal)
+//this is what the user sees when they go to the main directory
+$f3->route('GET /personal', function () {
+
+    //Instantiate a view
+    //Template is a class in the fat free framework
+    $view = new Template();
+    echo $view->render("views/personal.html");
+});
+
 //Run Fat-free
 $f3->run();
 // Java -> f3.run();
