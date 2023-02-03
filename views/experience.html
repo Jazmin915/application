@@ -17,7 +17,65 @@ Description: user enters personal info page-->
   </div>
 
   <form action="#" method="post" class="form-horizontal">
+    <div class="container-fluid row">
 
+      <div class="container-fluid col-7">
+        <div class="row g-3 pt-3">
+          <div class="col">
+            <label for="biography"><b>Biography</b></label>
+            <textarea class="form-control" id="biography" rows="10"
+                      placeholder="Lorem ipsum"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid col-4">
+        <div class="px-3 py-4 pt-5">
+
+            <label for="github" class="form-label">Github Link</label>
+            <input class="form-control" type="email" id="github" name="email" placeholder="github.com/my_github">
+
+          <div class="g-2 pt-3">
+            <div>
+              <label class="form-label"><b>Years Experience</b></label>
+            </div>
+
+            <label class="radio-inline form-check-inline">
+              <input type="radio" name="experience" id="yearsOpt1" checked> 0-2
+            </label>
+            <label class="radio-inline form-check-inline">
+              <input type="radio" name="experience" id="yearsOpt2"> 2-4
+            </label>
+            <label class="radio-inline form-check-inline">
+              <input type="radio" name="experience" id="yearsOpt3"> 4+
+            </label>
+          </div>
+
+          <div class="g-2 pt-3">
+            <div>
+              <label class="form-label"><b>Willing To Relocate</b></label>
+            </div>
+
+            <label class="radio-inline form-check-inline">
+              <input type="radio" name="relocate" id="yes" checked> Yes
+            </label>
+            <label class="radio-inline form-check-inline">
+              <input type="radio" name="relocate" id="no"> No
+            </label>
+            <label class="radio-inline form-check-inline">
+              <input type="radio" name="relocate" id="maybe"> Maybe
+            </label>
+          </div>
+
+        </div>
+        <div class="d-grid pt-4 text-center">
+
+          <a type="button" class="btn btn-primary text-center"
+             href="experience">Next ></a>
+        </div>
+      </div>
+
+    </div>
   </form>
 
 </div>

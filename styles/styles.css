@@ -33,3 +33,9 @@ img.img-responsive{
     font-style: italic;
     margin-left: 30px;
 }
+
+label.form-label {
+    font-weight: bold;
+}
+
+
