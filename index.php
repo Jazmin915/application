@@ -54,6 +54,15 @@ $f3->route('GET /openings', function () {
     echo $view->render("views/job-openings.html");
 });
 
+// Define route ("job openings page" for 328/application/summary)
+$f3->route('GET /summary', function () {
+
+    //Instantiate a view
+    //Template is a class in the fat free framework
+    $view = new Template();
+    echo $view->render("views/summary.html");
+});
+
 //Run Fat-free
 $f3->run();
 // Java -> f3.run();
