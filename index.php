@@ -3,7 +3,6 @@ Author: Jazmin Gonzalez
 Date: 1/20/23
 File: index.php
 Description: this is my controller for the application project-->
-
 <?php
 
 // Turn on error reporting
