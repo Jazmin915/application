@@ -23,7 +23,7 @@ Description: user enters personal info page-->
         <div class="row g-3 pt-3">
           <div class="col">
             <label for="biography"><b>Biography</b></label>
-            <textarea class="form-control" id="biography" rows="10"
+            <textarea class="form-control" name="biography" id="biography" rows="10"
                       placeholder="Lorem ipsum"></textarea>
           </div>
         </div>
@@ -33,7 +33,7 @@ Description: user enters personal info page-->
         <div class="px-3 py-4 pt-5">
 
             <label for="github" class="form-label">Github Link</label>
-            <input class="form-control" type="email" id="github" name="email" placeholder="github.com/my_github">
+            <input class="form-control" type="email" id="github" name="github" placeholder="github.com/my_github">
 
           <div class="g-2 pt-3">
             <div>
@@ -41,13 +41,13 @@ Description: user enters personal info page-->
             </div>
 
             <label class="radio-inline form-check-inline">
-              <input type="radio" name="experience" id="yearsOpt1" checked> 0-2
+              <input type="radio" name="experience" id="yearsOpt1" value="0-2 years"> 0-2
             </label>
             <label class="radio-inline form-check-inline">
-              <input type="radio" name="experience" id="yearsOpt2"> 2-4
+              <input type="radio" name="experience" id="yearsOpt2" value="2-4 years"> 2-4
             </label>
             <label class="radio-inline form-check-inline">
-              <input type="radio" name="experience" id="yearsOpt3"> 4+
+              <input type="radio" name="experience" id="yearsOpt3" value="4+ years"> 4+
             </label>
           </div>
 
@@ -57,21 +57,22 @@ Description: user enters personal info page-->
             </div>
 
             <label class="radio-inline form-check-inline">
-              <input type="radio" name="relocate" id="yes" checked> Yes
+              <input type="radio" name="relocate" id="yes" value="Yes"> Yes
             </label>
-            <label class="radio-inline form-check-inline">
+            <label class="radio-inline form-check-inline" value="No">
               <input type="radio" name="relocate" id="no"> No
             </label>
             <label class="radio-inline form-check-inline">
-              <input type="radio" name="relocate" id="maybe"> Maybe
+              <input type="radio" name="relocate" id="maybe" value="Maybe"> Maybe
             </label>
           </div>
 
         </div>
 
         <div class="d-grid pt-2 text-center">
-          <a type="button" class="btn btn-primary text-center"
-             href="openings">Next ></a>
+          <!--<a type="submit" class="btn btn-primary text-center"
+             href="openings">Next ></a>-->
+          <button class="btn btn-primary text-center" type="submit" >Next ></button>
         </div>
       </div>
 

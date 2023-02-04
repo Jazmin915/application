@@ -16,13 +16,34 @@ Description: user enters personal info page-->
     </div>
   </div>
 
-  <form action="#" method="post" class="form-horizontal">
     <div class="container-fluid row">
+
+      <div class="container-fluid col-4">
+        <div class="row g-3 pt-3">
+          <div class="border px-3 py-4">
+          <p>Name: {{ @SESSION.name}} {{ @SESSION.last}}</p>
+          <p>Email: {{ @SESSION.email}}</p>
+          <p>State: {{ @SESSION.state}}</p>
+          <p>Phone: {{ @SESSION.phone}}</p>
+          <p>Github: {{ @SESSION.github}}</p>
+          <p>Experience: {{ @SESSION.experience}}</p>
+          <p>Willing To Relocate: {{ @SESSION.relocate}}</p>
+          <p>Mailing lists: {{ @SESSION.job}} , {{ @SESSION.industry}}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid col-4">
+        <div class = "row g-3 pt-3">
+
+          <p>Summary</p>
+          <p>{{ @SESSION.biography}}</p>
+        </div>
+      </div>
 
 
 
     </div>
-  </form>
 
 </div>
 

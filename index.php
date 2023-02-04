@@ -1,14 +1,13 @@
-<!--
-Author: Jazmin Gonzalez
-Date: 1/20/23
-File: index.php
-Description: this is my controller for the application project-->
 <?php
-
 // Turn on error reporting
 ini_set('display_errors', 1);
-
 error_reporting(E_ALL);
+
+//Start a session
+session_start();
+/*if( empty(session_id()) && !headers_sent()){
+    session_start();
+}*/
 
 // Require the autoload file
 require_once('vendor/autoload.php');
@@ -28,28 +27,65 @@ $f3->route('GET /', function () {
 });
 
 // Define route ("personal info page" for 328/application/personal)
-$f3->route('GET /personal', function () {
+$f3->route('GET|POST /personal', function ($f3) {
 
+    //var_dump($_POST);
+    //If the form has been submitted
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //Move data from POST array to SESSION array
+        $_SESSION['name'] = $_POST['name'];
+        $_SESSION['last'] = $_POST['last'];
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['state'] = $_POST['state'];
+        $_SESSION['phone'] = $_POST['phone'];
+
+        //redirect to experience page
+        $f3->reroute('experience');
+    }
     //Instantiate a view
-    //Template is a class in the fat free framework
     $view = new Template();
     echo $view->render("views/personal.html");
 });
 
 // Define route ("experience/biography page" for 328/application/experience)
-$f3->route('GET /experience', function () {
+$f3->route('GET|POST /experience', function ($f3) {
 
+    //If the form has been submitted
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //Move data from POST array to SESSION array
+        $_SESSION['biography'] = $_POST['biography'];
+        $_SESSION['github'] = $_POST['github'];
+        $_SESSION['experience'] = $_POST['experience'];
+        $_SESSION['relocate'] = $_POST['relocate'];
+
+
+        //redirect to personal page
+        $f3->reroute('openings');
+
+    }
     //Instantiate a view
-    //Template is a class in the fat free framework
     $view = new Template();
     echo $view->render("views/experience.html");
 });
 
 // Define route ("job openings page" for 328/application/job-openings)
-$f3->route('GET /openings', function () {
+$f3->route('GET|POST /openings', function ($f3) {
+
+    //If the form has been submitted
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //Move data from POST array to SESSION array
+        $_SESSION['job'] = implode(", ",$_POST['job']);
+        $_SESSION['industry'] = implode(", ",$_POST['industry']);
+
+        //redirect to personal page
+        $f3->reroute('summary');
+
+    }
 
     //Instantiate a view
-    //Template is a class in the fat free framework
     $view = new Template();
     echo $view->render("views/job-openings.html");
 });
@@ -58,7 +94,7 @@ $f3->route('GET /openings', function () {
 $f3->route('GET /summary', function () {
 
     //Instantiate a view
-    //Template is a class in the fat free framework
+
     $view = new Template();
     echo $view->render("views/summary.html");
 });
