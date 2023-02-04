@@ -1,8 +1,8 @@
 <!--
 Author: Jazmin Gonzalez
 Date: 1/20/23
-File: experience.html
-Description: user enters personal info page-->
+File: summary.html
+Description: Page displays all the previous information the user has filled out-->
 
 <include href="views/header.html"></include>
 <body>
@@ -34,11 +34,15 @@ Description: user enters personal info page-->
       </div>
 
       <div class="container-fluid col-4">
-        <div class = "row g-3 pt-3">
-
-          <p>Summary</p>
+        <div class = "row">
+          <img class="img-responsive" src="images/profilePic.jpg" alt="profile admin pic" >
+          <h3>Summary</h3>
           <p>{{ @SESSION.biography}}</p>
         </div>
+      </div>
+
+      <div class="d-grid col-6 m-auto pt-4">
+        <button class="btn btn-primary btn-sm">Submit My Application!</button>
       </div>
 
 
