@@ -96,6 +96,9 @@ $f3->route('GET|POST /openings', function ($f3) {
 
     }
 
+    //adding the checkboxes to the hive
+    $f3->set('jobs', getJob());
+
     //Instantiate a view
     $view = new Template();
     echo $view->render("views/job-openings.html");

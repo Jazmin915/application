@@ -9,4 +9,10 @@
         return array("Yes", "No", "Maybe");
     }
 
+    //checkboxes on Job Opening page
+    function getJob(){
+        return array("JS"=>"JavaScript", "Html"=>"HTML", "php"=>"PHP", "css"=>"CSS",
+                    "java"=>"Java", "react"=>"ReactJS", "python"=>"Python", "node"=>"NodeJSsss");
+    }
+
 
