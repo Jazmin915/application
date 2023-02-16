@@ -11,6 +11,8 @@ session_start();
 
 // Require the autoload file
 require_once('vendor/autoload.php');
+require_once('model/data-layer.php');
+
 
 // Create an instance of the Base class (instantiate F3 base class)
 $f3 = Base::instance();
@@ -43,6 +45,8 @@ $f3->route('GET|POST /personal', function ($f3) {
         //redirect to experience page
         $f3->reroute('experience');
     }
+
+
     //Instantiate a view
     $view = new Template();
     echo $view->render("views/personal.html");
@@ -65,6 +69,13 @@ $f3->route('GET|POST /experience', function ($f3) {
         $f3->reroute('openings');
 
     }
+
+    //adding the radio buttons data to the hive----------
+    //Add years exp to the hive
+    $f3->set('years', getYears());
+    //add relocation to the hive
+    $f3->set('relocate', relocate());
+
     //Instantiate a view
     $view = new Template();
     echo $view->render("views/experience.html");

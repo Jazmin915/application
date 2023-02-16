@@ -32,15 +32,21 @@ Description: user enters their experience on this page-->
       <div class="container-fluid col-4">
         <div class="px-3 py-4 pt-5">
 
-            <label for="github" class="form-label">Github Link</label>
-            <input class="form-control" type="email" id="github" name="github" placeholder="github.com/my_github">
+          <label for="github" class="form-label">Github Link</label>
+          <input class="form-control" type="email" id="github" name="github" placeholder="github.com/my_github">
 
           <div class="g-2 pt-3">
             <div>
               <label class="form-label"><b>Years Experience</b></label>
             </div>
 
-            <label class="radio-inline form-check-inline">
+            <repeat group="{{ @years }}" value="{{ @years }}">
+              <label class="radio-inline form-check-inline">
+                <input type="radio" name="experience"  value="{{ @years }}"> {{ @years }}
+              </label>
+            </repeat>
+
+            <!--<label class="radio-inline form-check-inline">
               <input type="radio" name="experience" id="yearsOpt1" value="0-2 years"> 0-2
             </label>
             <label class="radio-inline form-check-inline">
@@ -48,7 +54,7 @@ Description: user enters their experience on this page-->
             </label>
             <label class="radio-inline form-check-inline">
               <input type="radio" name="experience" id="yearsOpt3" value="4+ years"> 4+
-            </label>
+            </label>-->
           </div>
 
           <div class="g-2 pt-3">
@@ -56,7 +62,13 @@ Description: user enters their experience on this page-->
               <label class="form-label"><b>Willing To Relocate</b></label>
             </div>
 
-            <label class="radio-inline form-check-inline">
+            <repeat group="{{ @relocate }}" value="{{ @relocate }}">
+              <label class="radio-inline form-check-inline">
+                <input type="radio" name="relocate"  value="{{ @relocate }}"> {{ @relocate }}
+              </label>
+            </repeat>
+
+            <!--<label class="radio-inline form-check-inline">
               <input type="radio" name="relocate" id="yes" value="Yes"> Yes
             </label>
             <label class="radio-inline form-check-inline" value="No">
@@ -65,7 +77,7 @@ Description: user enters their experience on this page-->
             <label class="radio-inline form-check-inline">
               <input type="radio" name="relocate" id="maybe" value="Maybe"> Maybe
             </label>
-          </div>
+          </div>-->
 
         </div>
 
