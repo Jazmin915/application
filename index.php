@@ -12,6 +12,8 @@ session_start();
 // Require the autoload file
 require_once('vendor/autoload.php');
 require_once('model/data-layer.php');
+require_once('model/validate.php');
+
 
 
 // Create an instance of the Base class (instantiate F3 base class)
@@ -42,8 +44,23 @@ $f3->route('GET|POST /personal', function ($f3) {
         $_SESSION['state'] = $_POST['state'];
         $_SESSION['phone'] = $_POST['phone'];
 
+        $name = trim($_POST['name']);
+        //validating the name is all alphabet
+        if(validName($name)) {
+            $_SESSION['name'] = $name;
+        } //if its not valid create a variable to store the error message
+        else {
+            $f3->set('errors["name"]',
+                'Name must have alphabetical characters only');
+        }
+
+        //if there are no errors go to next page
+        if (empty($f3->get('errors'))){
+            $f3->reroute('experience');
+        }
+
         //redirect to experience page
-        $f3->reroute('experience');
+        //$f3->reroute('experience');
     }
 
 
