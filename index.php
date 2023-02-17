@@ -38,9 +38,9 @@ $f3->route('GET|POST /personal', function ($f3) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //Move data from POST array to SESSION array
-        $_SESSION['name'] = $_POST['name'];
+        //$_SESSION['name'] = $_POST['name'];
         $_SESSION['last'] = $_POST['last'];
-        $_SESSION['email'] = $_POST['email'];
+        //$_SESSION['email'] = $_POST['email'];
         $_SESSION['state'] = $_POST['state'];
         $_SESSION['phone'] = $_POST['phone'];
 
@@ -54,15 +54,32 @@ $f3->route('GET|POST /personal', function ($f3) {
                 'Name must have alphabetical characters only');
         }
 
+        //validating the email
+        $email = $_POST['email'];
+        if(validEmail($email)) {
+            $_SESSION['email'] = $email;
+        } // else give an error message
+        else {
+            $f3->set('errors["email"]',
+                    'Please enter a valid email');
+        }
+
+        //validating phone
+        $phone = $_POST['phone'];
+        if(validEmail($phone)) {
+            $_SESSION['phone'] = $phone;
+        } // else give an error message
+        else {
+            $f3->set('errors["phone"]',
+                'Please enter a valid phone number');
+        }
+
         //if there are no errors go to next page
         if (empty($f3->get('errors'))){
             $f3->reroute('experience');
         }
 
-        //redirect to experience page
-        //$f3->reroute('experience');
     }
-
 
     //Instantiate a view
     $view = new Template();
@@ -77,13 +94,25 @@ $f3->route('GET|POST /experience', function ($f3) {
 
         //Move data from POST array to SESSION array
         $_SESSION['biography'] = $_POST['biography'];
-        $_SESSION['github'] = $_POST['github'];
+        //$_SESSION['github'] = $_POST['github'];
         $_SESSION['experience'] = $_POST['experience'];
         $_SESSION['relocate'] = $_POST['relocate'];
 
 
-        //redirect to personal page
-        $f3->reroute('openings');
+        $github = trim($_POST['github']);
+        //validating the name is all alphabet
+        if(validGithub($github)) {
+            $_SESSION['github'] = $github;
+        } //if its not valid create a variable to store the error message
+        else {
+            $f3->set('errors["github"]',
+                'Must be a valid GitHub URL');
+        }
+
+        //if there are no errors go to next page
+        if (empty($f3->get('errors'))){
+            $f3->reroute('openings');
+        }
 
     }
 

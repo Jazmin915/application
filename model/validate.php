@@ -12,3 +12,19 @@
         //shorter way of writing
         return ctype_alpha($name);
     }
+
+    //checking that the github link is a valid URL
+    function validGithub($github)
+    {
+        return filter_var($github, FILTER_VALIDATE_URL);
+    }
+
+    function validEmail($email)
+    {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+    }
+
+    function validPhone($phone)
+    {
+        return filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
+    }

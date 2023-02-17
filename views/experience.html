@@ -33,7 +33,11 @@ Description: user enters their experience on this page-->
         <div class="px-3 py-4 pt-5">
 
           <label for="github" class="form-label">Github Link</label>
-          <input class="form-control" type="email" id="github" name="github" placeholder="github.com/my_github">
+          <input class="form-control" type="text" id="github" name="github" placeholder="github.com/my_github">
+
+          <check if="{{ isset(@errors['github'])}}">
+            <span class ="err">{{ @errors['github'] }}</span>
+          </check>
 
           <div class="g-2 pt-3">
             <div>

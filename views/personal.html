@@ -41,7 +41,10 @@ Description: user enters personal info page-->
 
             <div class="row g-3 pt-3">
                 <label for="email" class="form-label">Email</label>
-                <input class="form-control" type="email" id="email" name="email">
+                <input class="form-control" type="text" id="email" name="email">
+                <check if="{{ isset(@errors['email'])}}">
+                    <span class ="err">{{ @errors['email'] }}</span>
+                </check>
             </div>
 
             <div class="row g-3 pt-3">
@@ -106,6 +109,9 @@ Description: user enters personal info page-->
                 <div class="col">
                     <label for="phone" class="form-label">Phone</label>
                     <input class="form-control" type="tel" id="phone" name="phone">
+                    <check if="{{ isset(@errors['phone'])}}">
+                        <span class ="err">{{ @errors['phone'] }}</span>
+                    </check>
                 </div>
             </div>
 
