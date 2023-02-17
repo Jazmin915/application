@@ -12,7 +12,11 @@
     //checkboxes on Job Opening page
     function getJob(){
         return array("JS"=>"JavaScript", "Html"=>"HTML", "php"=>"PHP", "css"=>"CSS",
-                    "java"=>"Java", "react"=>"ReactJS", "python"=>"Python", "node"=>"NodeJSsss");
+                    "java"=>"Java", "react"=>"ReactJS", "python"=>"Python", "node"=>"NodeJS");
     }
 
+    function getIndustry(){
+        return array("saas"=>"SaaS", "indTech"=>"Industrial Tech", "htech"=>"Health Tech",
+                        "cyber"=>"Cyber Security", "ag"=>"Ag Tech", "hit"=>"Hit Tech++");
+    }
 

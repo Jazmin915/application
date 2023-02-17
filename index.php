@@ -88,16 +88,16 @@ $f3->route('GET|POST /openings', function ($f3) {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //Move data from POST array to SESSION array
-        $_SESSION['job'] = implode(", ",$_POST['job']);
-        $_SESSION['industry'] = implode(", ",$_POST['industry']);
+        $_SESSION['jobSelected'] = implode(", ",$_POST['jobSelected']); //jobs is the name tag we set in out html
+        $_SESSION['industrySelected'] = implode(", ",$_POST['industrySelected']);
 
         //redirect to personal page
         $f3->reroute('summary');
-
     }
 
-    //adding the checkboxes to the hive
+    //adding to the hive
     $f3->set('jobs', getJob());
+    $f3->set('industry', getIndustry());
 
     //Instantiate a view
     $view = new Template();
