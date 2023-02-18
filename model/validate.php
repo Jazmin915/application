@@ -28,3 +28,23 @@
     {
         return filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
     }
+
+    function validSelectionsJobs($jobSelected)
+    {
+
+        $validOptions = getJob();
+        foreach ($jobSelected as $option) {
+            if (!in_array($option, $validOptions)) {
+                return false;
+            }
+        }
+        return true;
+/*
+        if (in_array($jobSelected, getJob())){
+            return true;
+        } else {
+            return false;
+        }*/
+
+
+    }

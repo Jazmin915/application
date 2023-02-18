@@ -31,6 +31,10 @@ Description: user enters personal info page-->
                     <check if="{{ isset(@errors['name'])}}">
                         <span class ="err">{{ @errors['name'] }}</span>
                     </check>
+
+                    <check if="{{ isset(@empty['name'])}}">
+                        <br><span class ="err">{{ @errors['name'] }}</span></b>
+                    </check>
                 </div>
 
                 <div class="col">

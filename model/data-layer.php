@@ -10,9 +10,14 @@
     }
 
     //checkboxes on Job Opening page
-    function getJob(){
+    /*function getJob(){
         return array("JS"=>"JavaScript", "Html"=>"HTML", "php"=>"PHP", "css"=>"CSS",
                     "java"=>"Java", "react"=>"ReactJS", "python"=>"Python", "node"=>"NodeJS");
+    }*/
+
+    function getJob(){
+        return array("JavaScript", "HTML", "PHP", "CSS",
+        "Java", "ReactJS", "Python", "NodeJS");
     }
 
     function getIndustry(){

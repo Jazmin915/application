@@ -19,13 +19,17 @@ Description: user selects which positions they are interested in page-->
   <form action="#" method="post" class="form-horizontal">
     <div class="container-fluid row">
 
+
+      <check if="{{ isset(@errors['jobSelected'])}}">
+        <span class ="err">{{ @errors['jobSelected'] }}</span>
+      </check>
       <div class="px-3 py-4 pt-2">
       <b>Software Development Jobs</b>
         <div class="row">
             <div class="row d-flex justify-content-between">
-              <repeat group="{{ @jobs }}" value="{{ @job }}" key="{{ @key }}">
+              <repeat group="{{ @jobs }}" value="{{ @job }}">
                 <label class="col-3">
-                  <input class="form-check-input" type="checkbox" name="jobSelected[]" value="{{ @key }}">
+                  <input class="form-check-input" type="checkbox" name="jobSelected[]" value="{{ @job }}">
                   {{ @job }}
                 </label>
               </repeat>

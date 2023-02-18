@@ -45,6 +45,10 @@ $f3->route('GET|POST /personal', function ($f3) {
         $_SESSION['phone'] = $_POST['phone'];
 
         $name = trim($_POST['name']);
+        if(empty($_POST['name'])){
+            $f3->set('errors["name"]',
+                    'This section must be filled');
+        }
         //validating the name is all alphabet
         if(validName($name)) {
             $_SESSION['name'] = $name;
@@ -66,7 +70,7 @@ $f3->route('GET|POST /personal', function ($f3) {
 
         //validating phone
         $phone = $_POST['phone'];
-        if(validEmail($phone)) {
+        if(validPhone($phone)) {
             $_SESSION['phone'] = $phone;
         } // else give an error message
         else {
@@ -137,8 +141,23 @@ $f3->route('GET|POST /openings', function ($f3) {
         $_SESSION['jobSelected'] = implode(", ",$_POST['jobSelected']); //jobs is the name tag we set in out html
         $_SESSION['industrySelected'] = implode(", ",$_POST['industrySelected']);
 
+        //validate the job selection
+        $jobSelected = $_POST['jobSelected'];
+        if(validSelectionsJobs($jobSelected)){
+            $_SESSION['jobSelected'] = $jobSelected;
+        } else {
+            $f3->set('errors["jobSelected"]',
+                    'Job Selection is invalid!!!');
+        }
+
+        //if there are no errors go to next page
+        if (empty($f3->get('errors'))){
+            $f3->reroute('summary');
+        }
+
+
         //redirect to personal page
-        $f3->reroute('summary');
+        //$f3->reroute('summary');
     }
 
     //adding to the hive
