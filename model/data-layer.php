@@ -20,8 +20,13 @@
         "Java", "ReactJS", "Python", "NodeJS");
     }
 
-    function getIndustry(){
+    /*function getIndustry(){
         return array("saas"=>"SaaS", "indTech"=>"Industrial Tech", "htech"=>"Health Tech",
                         "cyber"=>"Cyber Security", "ag"=>"Ag Tech", "hit"=>"Hit Tech++");
+    }*/
+
+    function getIndustry(){
+        return array("SaaS", "Industrial Tech", "Health Tech",
+                        "Cyber Security", "Ag Tech", "Hit Tech");
     }
 

@@ -28,11 +28,11 @@ Description: user enters personal info page-->
                     <label for="name" class="form-label">First Name</label>
                     <input class="form-control" type="text" id="name" name="name">
                     <!--Validating the name-->
-                    <check if="{{ isset(@errors['name'])}}">
-                        <span class ="err">{{ @errors['name'] }}</span>
+                    <check if="{{ isset(@empty['name'])}}">
+                        <span class ="err">{{ @empty['name'] }}</span>
                     </check>
 
-                    <check if="{{ isset(@empty['name'])}}">
+                    <check if="{{ isset(@errors['name'])}}">
                         <br><span class ="err">{{ @errors['name'] }}</span></b>
                     </check>
                 </div>

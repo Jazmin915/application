@@ -29,7 +29,17 @@
         return filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
     }
 
-    function validSelectionsJobs($jobSelected)
+    function validExperienceBio($biography){
+
+        return is_string($biography);
+    }
+
+    function validExperience($year) {
+
+        return in_array($year, getYears());
+    }
+
+    function validSelectionsJobs($jobSelected): bool
     {
 
         $validOptions = getJob();
@@ -47,4 +57,15 @@
         }*/
 
 
+    }
+
+    function validSelectionsVerticals($industrySelected)
+    {
+        $validOptions = getIndustry();
+        foreach ($industrySelected as $option) {
+            if (!in_array($option, $validOptions)) {
+                return false;
+            }
+        }
+        return true;
     }

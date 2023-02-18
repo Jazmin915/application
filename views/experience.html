@@ -23,6 +23,11 @@ Description: user enters their experience on this page-->
         <div class="row g-3 pt-3">
           <div class="col">
             <label for="biography"><b>Biography</b></label>
+
+            <check if="{{ isset(@errors['biography'])}}">
+              <span class ="err">{{ @errors['biography'] }}</span>
+            </check>
+
             <textarea class="form-control" name="biography" id="biography" rows="10"
                       placeholder="Lorem ipsum"></textarea>
           </div>
@@ -46,9 +51,12 @@ Description: user enters their experience on this page-->
 
             <repeat group="{{ @years }}" value="{{ @years }}">
               <label class="radio-inline form-check-inline">
-                <input type="radio" name="experience"  value="{{ @years }}"> {{ @years }}
+                <input type="radio" name="year"  value="{{ @years }}"> {{ @years }}
               </label>
             </repeat>
+            <check if="{{ isset(@errors['year'])}}">
+              <span class ="err">{{ @errors['year'] }}</span>
+            </check>
 
             <!--<label class="radio-inline form-check-inline">
               <input type="radio" name="experience" id="yearsOpt1" value="0-2 years"> 0-2

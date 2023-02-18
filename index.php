@@ -45,8 +45,8 @@ $f3->route('GET|POST /personal', function ($f3) {
         $_SESSION['phone'] = $_POST['phone'];
 
         $name = trim($_POST['name']);
-        if(empty($_POST['name'])){
-            $f3->set('errors["name"]',
+        if(empty($_POST['name']) || empty($_POST['last'])){
+            $f3->set('empty["name"]',
                     'This section must be filled');
         }
         //validating the name is all alphabet
@@ -99,9 +99,27 @@ $f3->route('GET|POST /experience', function ($f3) {
         //Move data from POST array to SESSION array
         $_SESSION['biography'] = $_POST['biography'];
         //$_SESSION['github'] = $_POST['github'];
-        $_SESSION['experience'] = $_POST['experience'];
+        //$_SESSION['experience'] = $_POST['experience'];
         $_SESSION['relocate'] = $_POST['relocate'];
 
+
+        $biography= $_POST['biography'];
+        if(validExperienceBio($biography)){ //if valid meal then put it in the session array
+            $_SESSION['biography'] = $biography;
+        } else {
+            $f3->set('errors["biography"]',
+                'Please enter your bio');
+        }
+
+
+        //Validate the years exp
+        $year= $_POST['year'];
+        if(validExperience($year)){ //if valid meal then put it in the session array
+            $_SESSION['year'] = $year;
+        } else {
+            $f3->set('errors["year"]',
+                'experience is invalid');
+        }
 
         $github = trim($_POST['github']);
         //validating the name is all alphabet
@@ -148,6 +166,15 @@ $f3->route('GET|POST /openings', function ($f3) {
         } else {
             $f3->set('errors["jobSelected"]',
                     'Job Selection is invalid!!!');
+        }
+
+        //validate the industry selection
+        $industrySelected = $_POST['industrySelected'];
+        if(validSelectionsVerticals($industrySelected)){
+            $_SESSION['industrySelected'] = $industrySelected;
+        } else {
+            $f3->set('errors["industry"]',
+                'Industry Selection is invalid!!!');
         }
 
         //if there are no errors go to next page
