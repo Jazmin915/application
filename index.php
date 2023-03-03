@@ -13,8 +13,13 @@ session_start();
 require_once('vendor/autoload.php');
 require_once('model/data-layer.php');
 require_once('model/validate.php');
+require_once('classes/applicant.php');
 
-
+//test code for applicant class
+$applicant1 = new Applicants();
+$applicant1->setFname("Rodney");
+echo $applicant1->getFname();
+var_dump($applicant1);
 
 // Create an instance of the Base class (instantiate F3 base class)
 $f3 = Base::instance();
