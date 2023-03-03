@@ -1,6 +1,9 @@
 <?php
+
+Class Validate
+{
     //function to check if all name is alphabetic
-    function validName($name)
+    static function validName($name)
     {
         /*if (ctype_alpha($name)){
             return true;
@@ -14,32 +17,32 @@
     }
 
     //checking that the github link is a valid URL
-    function validGithub($github)
+    static function validGithub($github)
     {
         return filter_var($github, FILTER_VALIDATE_URL);
     }
 
-    function validEmail($email)
+    static function validEmail($email)
     {
         return filter_var($email, FILTER_VALIDATE_EMAIL);
     }
 
-    function validPhone($phone)
+    static function validPhone($phone)
     {
         return filter_var($phone, FILTER_SANITIZE_NUMBER_INT);
     }
 
-    function validExperienceBio($biography){
+    static function validExperienceBio($biography){
 
         return is_string($biography);
     }
 
-    function validExperience($year) {
+    static function validExperience($year) {
 
         return in_array($year, getYears());
     }
 
-    function validSelectionsJobs($jobSelected): bool
+    static function validSelectionsJobs($jobSelected): bool
     {
 
         $validOptions = getJob();
@@ -49,17 +52,17 @@
             }
         }
         return true;
-/*
-        if (in_array($jobSelected, getJob())){
-            return true;
-        } else {
-            return false;
-        }*/
+        /*
+                if (in_array($jobSelected, getJob())){
+                    return true;
+                } else {
+                    return false;
+                }*/
 
 
     }
 
-    function validSelectionsVerticals($industrySelected)
+    static function validSelectionsVerticals($industrySelected)
     {
         $validOptions = getIndustry();
         foreach ($industrySelected as $option) {
@@ -69,3 +72,4 @@
         }
         return true;
     }
+}
