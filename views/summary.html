@@ -25,9 +25,9 @@ Description: Page displays all the previous information the user has filled out-
           <p>Email: {{ @SESSION.newApplicant->getEmail()}}</p>
           <p>State: {{ @SESSION.newApplicant->getState()}}</p>
           <p>Phone: {{ @SESSION.newApplicant->getPhone()}}</p>
-          <p>Github: {{ @SESSION.github}}</p>
-          <p>Experience: {{ @SESSION.experience}} years</p>
-          <p>Willing To Relocate: {{ @SESSION.relocate}}</p>
+          <p>Github: {{ @SESSION.newApplicant->getGitHub()}}</p>
+          <p>Experience: {{ @SESSION.newApplicant->getExperience()}} years</p>
+          <p>Willing To Relocate: {{ @SESSION.newApplicant->getRelocate()}}</p>
           <p>Mailing lists: {{ @SESSION.jobSelected}} , {{ @SESSION.industrySelected}}</p>
           </div>
         </div>
@@ -37,7 +37,7 @@ Description: Page displays all the previous information the user has filled out-
         <div class = "row">
           <img class="img-responsive" src="images/profilePic.jpg" alt="profile admin pic" >
           <h3>Summary</h3>
-          <p>{{ @SESSION.biography}}</p>
+          <p>{{ @SESSION.newApplicant->getBio()}}</p>
         </div>
       </div>
 

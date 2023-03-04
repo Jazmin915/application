@@ -92,27 +92,37 @@ class Controller
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            //Move data from POST array to SESSION array
-            //$_SESSION['biography'] = $_POST['biography'];
-            //$_SESSION['github'] = $_POST['github'];
-            //$_SESSION['experience'] = $_POST['experience'];
-            $_SESSION['relocate'] = $_POST['relocate'];
+            //Move data from POST array to the newApplication object in our SESSION array
+
+            $relocate = $_POST['relocate'];
+            $_SESSION['newApplicant']->setRelocate($relocate);
+
+            //what we had before
+            //$_SESSION['relocate'] = $_POST['relocate'];
 
 
-            $biography= $_POST['biography'];
+            $bio = $_POST['biography'];
+            if(Validate::validExperienceBio($bio)){ //if valid meal then put it in the session array
+                $_SESSION['newApplicant']->setBio($bio);
+            } else {
+                $this->_f3->set('errors["biography"]',
+                    'Please enter your bio');
+            }
+
+            /*$biography= $_POST['biography'];
             if(Validate::validExperienceBio($biography)){ //if valid meal then put it in the session array
                 //$newApplicant->setBio($biography);
                 $_SESSION['biography'] = $biography;
             } else {
                 $this->_f3->set('errors["biography"]',
                     'Please enter your bio');
-            }
+            }*/
 
 
             //Validate the years exp
             $year= $_POST['year'];
             if(Validate::validExperience($year)){ //if valid meal then put it in the session array
-                $_SESSION['year'] = $year;
+                $_SESSION['newApplicant']->setExperience($year);
             } else {
                 $this->_f3->set('errors["year"]',
                     'experience is invalid');
@@ -121,7 +131,7 @@ class Controller
             $github = trim($_POST['github']);
             //validating the name is all alphabet
             if(Validate::validGithub($github)) {
-                $_SESSION['github'] = $github;
+                $_SESSION['newApplicant']->setGitHub($github);
             } //if its not valid create a variable to store the error message
             else {
                 $this->_f3->set('errors["github"]',
@@ -197,5 +207,8 @@ class Controller
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/summary.html");
+
+        //destroy the session
+        session_destroy();
     }
 }
