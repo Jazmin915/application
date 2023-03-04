@@ -154,7 +154,7 @@ class Applicant
      * @param $expereince string
      *
      */
-    public function setExperience(string $expereince)
+    public function setExperience($expereince)
     {
         $this->_experience = $expereince;
     }
@@ -173,7 +173,7 @@ class Applicant
      * @param $relocate string
      *
      */
-    public function setRelocate(string $relocate)
+    public function setRelocate($relocate)
     {
         $this->_relocate = $relocate;
     }
@@ -192,7 +192,7 @@ class Applicant
      * @param $bio string
      *
      */
-    public function setBio(string $bio)
+    public function setBio($bio)
     {
         $this->_bio = $bio;
     }
