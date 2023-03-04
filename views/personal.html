@@ -25,15 +25,15 @@ Description: user enters personal info page-->
         <div class="container-fluid col-8">
             <div class="row g-3 pt-3">
                 <div class="col">
-                    <label for="name" class="form-label">First Name</label>
-                    <input class="form-control" type="text" id="name" name="name">
+                    <label for="fname" class="form-label">First Name</label>
+                    <input class="form-control" type="text" id="fname" name="fname">
                     <!--Validating the name-->
-                    <check if="{{ isset(@empty['name'])}}">
-                        <span class ="err">{{ @empty['name'] }}</span>
+                    <check if="{{ isset(@empty['fname'])}}">
+                        <span class ="err">{{ @empty['fname'] }}</span>
                     </check>
 
-                    <check if="{{ isset(@errors['name'])}}">
-                        <br><span class ="err">{{ @errors['name'] }}</span></b>
+                    <check if="{{ isset(@errors['fname'])}}">
+                        <br><span class ="err">{{ @errors['fname'] }}</span></b>
                     </check>
                 </div>
 
@@ -116,6 +116,14 @@ Description: user enters personal info page-->
                     <check if="{{ isset(@errors['phone'])}}">
                         <span class ="err">{{ @errors['phone'] }}</span>
                     </check>
+                </div>
+
+                <div class="col-12">
+                    <label class="form-label"><strong>Mailing Lists</strong></label><br>
+                    <label
+                            class="form-check-label"><input class="form-check-input mx-2" type="checkbox" name="mailList" value="mailList">
+                        Sign me up for job openings mailing lists
+                    </label>
                 </div>
             </div>
 

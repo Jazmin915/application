@@ -3,7 +3,7 @@
 Class Validate
 {
     //function to check if all name is alphabetic
-    static function validName($name)
+    static function validName($fname)
     {
         /*if (ctype_alpha($name)){
             return true;
@@ -13,7 +13,7 @@ Class Validate
         }*/
 
         //shorter way of writing
-        return ctype_alpha($name);
+        return ctype_alpha($fname);
     }
 
     //checking that the github link is a valid URL

@@ -4,7 +4,6 @@ class Controller
     //Field that represents FatFree object
     private $_f3;
 
-
     function __construct($f3)
     {
         $this->_f3 = $f3;
@@ -19,28 +18,31 @@ class Controller
 
     function personal()
     {
-        //var_dump($_POST);
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            //Move data from POST array to SESSION array
+            //Creating an Applicant object
+            $newApplicant = new Applicant();
+
+            //Move data from POST array into object then into Session array
             //$_SESSION['name'] = $_POST['name'];
             $_SESSION['last'] = $_POST['last'];
             //$_SESSION['email'] = $_POST['email'];
             $_SESSION['state'] = $_POST['state'];
             $_SESSION['phone'] = $_POST['phone'];
 
-            $name = trim($_POST['name']);
-            if(empty($_POST['name']) || empty($_POST['last'])){
-                $this->_f3->set('empty["name"]',
+            $fname = trim($_POST['fname']);
+            if(empty($_POST['fname']) || empty($_POST['last'])){
+                $this->_f3->set('empty["fname"]',
                     'This section must be filled');
             }
             //validating the name is all alphabet
-            if(Validate::validName($name)) {
-                $_SESSION['name'] = $name;
+            if(Validate::validName($fname)) {
+                $newApplicant->setFname($fname);
+                //$_SESSION['name'] = $name;
             } //if its not valid create a variable to store the error message
             else {
-                $this->_f3->set('errors["name"]',
+                $this->_f3->set('errors["fname"]',
                     'Name must have alphabetical characters only');
             }
 
@@ -66,6 +68,8 @@ class Controller
 
             //if there are no errors go to next page
             if (empty($this->_f3->get('errors'))){
+                //if there are no errors, put the newApplicant object into a session array
+                $_SESSION['newApplicant'] = $newApplicant;
                 $this->_f3->reroute('experience');
             }
         }

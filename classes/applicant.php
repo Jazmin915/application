@@ -1,7 +1,7 @@
 <?php
 /**Order class represents all applicants**/
 
-class Applicants
+class Applicant
 {
     private $_fname;
     private $_lname;

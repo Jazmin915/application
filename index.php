@@ -12,7 +12,7 @@ require_once('model/data-layer.php');
 session_start();
 
 //test code for applicant class
-/*$applicant1 = new Applicants();
+/*$applicant1 = new Applicant();
 $applicant1->setFname("Rodney");
 echo $applicant1->getFname();
 var_dump($applicant1);*/
