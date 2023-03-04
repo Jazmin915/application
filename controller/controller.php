@@ -26,10 +26,17 @@ class Controller
 
             //Move data from POST array into object then into Session array
             //$_SESSION['name'] = $_POST['name'];
-            $_SESSION['last'] = $_POST['last'];
+            //$_SESSION['last'] = $_POST['last'];
             //$_SESSION['email'] = $_POST['email'];
-            $_SESSION['state'] = $_POST['state'];
-            $_SESSION['phone'] = $_POST['phone'];
+            //$_SESSION['state'] = $_POST['state'];
+
+            //data to add to the Applicant object
+            $last = $_POST['last'];
+            $newApplicant->setLname($last);
+
+            $state = $_POST['state'];
+            $newApplicant->setState($state);
+
 
             $fname = trim($_POST['fname']);
             if(empty($_POST['fname']) || empty($_POST['last'])){
@@ -38,8 +45,8 @@ class Controller
             }
             //validating the name is all alphabet
             if(Validate::validName($fname)) {
+                //$_SESSION['fname'] = $fname;
                 $newApplicant->setFname($fname);
-                //$_SESSION['name'] = $name;
             } //if its not valid create a variable to store the error message
             else {
                 $this->_f3->set('errors["fname"]',
@@ -49,7 +56,8 @@ class Controller
             //validating the email
             $email = $_POST['email'];
             if(Validate::validEmail($email)) {
-                $_SESSION['email'] = $email;
+                $newApplicant->setEmail($email);
+                //$_SESSION['email'] = $email;
             } // else give an error message
             else {
                 $this->_f3->set('errors["email"]',
@@ -59,7 +67,8 @@ class Controller
             //validating phone
             $phone = $_POST['phone'];
             if(Validate::validPhone($phone)) {
-                $_SESSION['phone'] = $phone;
+                $newApplicant->setPhone($phone);
+                //$_SESSION['phone'] = $phone;
             } // else give an error message
             else {
                 $this->_f3->set('errors["phone"]',
@@ -84,7 +93,7 @@ class Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             //Move data from POST array to SESSION array
-            $_SESSION['biography'] = $_POST['biography'];
+            //$_SESSION['biography'] = $_POST['biography'];
             //$_SESSION['github'] = $_POST['github'];
             //$_SESSION['experience'] = $_POST['experience'];
             $_SESSION['relocate'] = $_POST['relocate'];
@@ -92,6 +101,7 @@ class Controller
 
             $biography= $_POST['biography'];
             if(Validate::validExperienceBio($biography)){ //if valid meal then put it in the session array
+                //$newApplicant->setBio($biography);
                 $_SESSION['biography'] = $biography;
             } else {
                 $this->_f3->set('errors["biography"]',

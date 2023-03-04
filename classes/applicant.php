@@ -14,16 +14,16 @@ class Applicant
     private $_bio;
 
     //constructor
-    function __construct(){
-        $this->_fname = "";
-        $this->_lname = "";
-        $this->_email = "";
-        $this->_state = "";
-        $this->_phone = "";
-        $this->_github = "";
-        $this->_experience = "";
-        $this->_relocate = "";
-        $this->_bio = "";
+    function __construct($fname="", $lname="", $email="", $state="", $phone="", $github="", $experience="", $relocate="", $bio="" ){
+        $this->_fname = $fname;
+        $this->_lname = $lname;
+        $this->_email = $email;
+        $this->_state = $state;
+        $this->_phone = $phone;
+        $this->_github = $github;
+        $this->_experience = $experience;
+        $this->_relocate = $relocate;
+        $this->_bio = $bio;
     }
 
     /**

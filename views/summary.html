@@ -21,10 +21,10 @@ Description: Page displays all the previous information the user has filled out-
       <div class="container-fluid col-4">
         <div class="row g-3 pt-3">
           <div class="border px-3 py-4">
-          <p>Name: {{ @SESSION.newApplicant->getFname()}} {{ @SESSION.last}}</p>
-          <p>Email: {{ @SESSION.email}}</p>
-          <p>State: {{ @SESSION.state}}</p>
-          <p>Phone: {{ @SESSION.phone}}</p>
+          <p>Name: {{ @SESSION.newApplicant->getFname()}} {{ @SESSION.newApplicant->getLname()}}</p>
+          <p>Email: {{ @SESSION.newApplicant->getEmail()}}</p>
+          <p>State: {{ @SESSION.newApplicant->getState()}}</p>
+          <p>Phone: {{ @SESSION.newApplicant->getPhone()}}</p>
           <p>Github: {{ @SESSION.github}}</p>
           <p>Experience: {{ @SESSION.experience}} years</p>
           <p>Willing To Relocate: {{ @SESSION.relocate}}</p>

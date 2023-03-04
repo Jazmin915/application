@@ -17,6 +17,7 @@ $applicant1->setFname("Rodney");
 echo $applicant1->getFname();
 var_dump($applicant1);*/
 
+
 // Create an instance of the Base class (instantiate F3 base class)
 $f3 = Base::instance();
 // Java equivalent -> Base f3 = new Base();
