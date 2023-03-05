@@ -1,14 +1,26 @@
 <?php
 class Controller
+    /**
+     * my controller class for defining roots
+     */
+
 {
     //Field that represents FatFree object
     private $_f3;
 
+    /**
+     * this function instantiates the controller class
+     * @param $f3
+     */
     function __construct($f3)
     {
         $this->_f3 = $f3;
     }
 
+    /**
+     * function that defines the home root
+     * @return void
+     */
     function home()
     {
         //Instantiate a view
@@ -16,6 +28,11 @@ class Controller
         echo $view->render("views/home.html");
     }
 
+    /**
+     * this function represents the route for my personal info page
+     * this is where my applicant object is created and stored in the session
+     * @return void
+     */
     function personal()
     {
         //If the form has been submitted
@@ -87,6 +104,10 @@ class Controller
         echo $view->render("views/personal.html");
     }
 
+    /**
+     * this function is the route info for the experience page
+     * @return void
+     */
     function experience()
     {
         //If the form has been submitted
@@ -147,19 +168,38 @@ class Controller
 
         //adding the radio buttons data to the hive----------
         //Add years exp to the hive
-        $this->_f3->set('years', getYears());
+        $this->_f3->set('years', DataLayer::getYears());
         //add relocation to the hive
-        $this->_f3->set('relocate', relocate());
+        $this->_f3->set('relocate', DataLayer::relocate());
 
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/experience.html");
     }
 
+    /**
+     * this function is the route info for the openings/mailing list page
+     * @return void
+     */
     function openings()
     {
         //If the form has been submitted
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            //create a subscribed object
+            $subscribedApplicant = new Applicant_SubscribedToLists();
+
+            //put data in this object and set it to the session array
+
+            //call it in the summary
+
+
+            /*$jobString = implode(", ",$_POST['jobSelected']);
+            $subscribedApplicant->getSelectionsJobs($jobString);
+
+            $industryString = implode(", ",$_POST['industrySelected']);
+            $subscribedApplicant->getSelectionsVerticals($industryString);*/
+
 
             //Move data from POST array to SESSION array
             $_SESSION['jobSelected'] = implode(", ",$_POST['jobSelected']); //jobs is the name tag we set in out html
@@ -194,14 +234,18 @@ class Controller
         }
 
         //adding to the hive
-        $this->_f3->set('jobs', getJob());
-        $this->_f3->set('industry', getIndustry());
+        $this->_f3->set('jobs', DataLayer::getJob());
+        $this->_f3->set('industry', DataLayer::getIndustry());
 
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/job-openings.html");
     }
 
+    /**
+     * this function is the route info for the summary page
+     * @return void
+     */
     function summary()
     {
         //Instantiate a view

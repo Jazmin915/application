@@ -39,13 +39,13 @@ Class Validate
 
     static function validExperience($year) {
 
-        return in_array($year, getYears());
+        return in_array($year, DataLayer::getYears());
     }
 
     static function validSelectionsJobs($jobSelected): bool
     {
 
-        $validOptions = getJob();
+        $validOptions = DataLayer::getJob();
         foreach ($jobSelected as $option) {
             if (!in_array($option, $validOptions)) {
                 return false;
@@ -64,7 +64,7 @@ Class Validate
 
     static function validSelectionsVerticals($industrySelected)
     {
-        $validOptions = getIndustry();
+        $validOptions = DataLayer::getIndustry();
         foreach ($industrySelected as $option) {
             if (!in_array($option, $validOptions)) {
                 return false;

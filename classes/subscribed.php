@@ -1,6 +1,6 @@
 <?php
-class Applicant_SubscribedToLists extends Pet
-{
+class Applicant_SubscribedToLists extends Applicant
+{/*
     private $_selectionsJobs = array();
 
     private $_selectionsVerticals = array();
@@ -23,5 +23,5 @@ class Applicant_SubscribedToLists extends Pet
     public function getSelectionsVerticals()
     {
         return $this->_selectionsVerticals;
-    }
+    }*/
 }
