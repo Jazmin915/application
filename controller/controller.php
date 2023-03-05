@@ -219,7 +219,8 @@ class Controller
             //validate the job selection
             $jobSelected = $_POST['jobSelected'];
             if(Validate::validSelectionsJobs($jobSelected)){
-                $_SESSION['jobSelected'] = $jobSelected;
+                $jobSelected = implode(", ",$_POST['jobSelected']);
+                $subscribedApplicant->setSelectionsJobs($jobSelected);
             } else {
                 $this->_f3>set('errors["jobSelected"]',
                     'Job Selection is invalid!!!');
@@ -228,20 +229,36 @@ class Controller
             //validate the industry selection
             $industrySelected = $_POST['industrySelected'];
             if(Validate::validSelectionsVerticals($industrySelected)){
+                $industrySelected = implode(", ",$_POST['industrySelected']);
+                $subscribedApplicant->setSelectionsVerticals($industrySelected);
+            }
+            else {
+                $this->_f3->set('errors["industry"]',
+                    'Industry Selection is invalid!!!');
+            }
+
+            /*$jobSelected = $_POST['jobSelected'];
+            if(Validate::validSelectionsJobs($jobSelected)){
+                $_SESSION['jobSelected'] = $jobSelected;
+            } else {
+                $this->_f3>set('errors["jobSelected"]',
+                    'Job Selection is invalid!!!');
+            }*/
+
+            /*//validate the industry selection
+            $industrySelected = $_POST['industrySelected'];
+            if(Validate::validSelectionsVerticals($industrySelected)){
                 $_SESSION['industrySelected'] = $industrySelected;
             } else {
                 $this->_f3->set('errors["industry"]',
                     'Industry Selection is invalid!!!');
-            }
+            }*/
 
             //if there are no errors go to next page
             if (empty($this->_f3->get('errors'))){
                 $this->_f3->reroute('summary');
             }
 
-
-            //redirect to personal page
-            //$f3->reroute('summary');
         }
 
         //adding to the hive

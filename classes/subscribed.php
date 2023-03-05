@@ -1,13 +1,19 @@
 <?php
 class Applicant_SubscribedToLists extends Applicant
-{/*
-    private $_selectionsJobs = array();
+{
+    private $_selectionsJobs;
 
-    private $_selectionsVerticals = array();
+    private $_selectionsVerticals;
 
-    public function setSelectionsJobs($selectionsJobs)
+    function __construct($job="", $vertical="")
     {
-        $this->_selectionsJobs = $selectionsJobs;
+        $this->_selectionsJobs = $job;
+        $this->_selectionsVerticals = $vertical;
+
+    }
+    public function setSelectionsJobs($job)
+    {
+        $this->_selectionsJobs = $job;
     }
 
     public function getSelectionsJobs()
@@ -15,13 +21,13 @@ class Applicant_SubscribedToLists extends Applicant
        return $this->_selectionsJobs;
     }
 
-    public function setSelectionsVerticals($selectionsVerticals)
+    public function setSelectionsVerticals($vertical)
     {
-        $this->_selectionsJobs = $selectionsVerticals;
+        $this->_selectionsJobs = $vertical;
     }
 
     public function getSelectionsVerticals()
     {
         return $this->_selectionsVerticals;
-    }*/
+    }
 }

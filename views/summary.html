@@ -28,7 +28,19 @@ Description: Page displays all the previous information the user has filled out-
           <p>Github: {{ @SESSION.newApplicant->getGitHub()}}</p>
           <p>Experience: {{ @SESSION.newApplicant->getExperience()}} years</p>
           <p>Willing To Relocate: {{ @SESSION.newApplicant->getRelocate()}}</p>
-          <p>Mailing lists: {{ @SESSION.jobSelected}} , {{ @SESSION.industrySelected}}</p>
+
+            <!--<check if="{{ @SESSION['newApplicant'] instanceof Applicant_SubscribedToList }}">
+              &lt;!&ndash;if true this message appears&ndash;&gt;
+              <true>
+                <p>Mailing lists: {{ @SESSION.subscribedApplicant->getSelectionsJobs()}} , {{ @SESSION.subscribedApplicant->getSelectionsVerticals()}}</p>
+              </true>
+              &lt;!&ndash;else, no mailing lists will appear&ndash;&gt;
+              <false>
+
+              </false>
+            </check>-->
+
+            <p>Mailing lists: {{ @SESSION.jobSelected}} , {{ @SESSION.industrySelected}}</p>
           </div>
         </div>
       </div>
