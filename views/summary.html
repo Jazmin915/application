@@ -16,11 +16,11 @@ Description: Page displays all the previous information the user has filled out-
     </div>
   </div>
 
-    <div class="container-fluid row">
+  <div class="container-fluid row">
 
-      <div class="container-fluid col-4">
-        <div class="row g-3 pt-3">
-          <div class="border px-3 py-4">
+    <div class="container-fluid col-4">
+      <div class="row g-3 pt-3">
+        <div class="border px-3 py-4">
           <p>Name: {{ @SESSION.newApplicant->getFname()}} {{ @SESSION.newApplicant->getLname()}}</p>
           <p>Email: {{ @SESSION.newApplicant->getEmail()}}</p>
           <p>State: {{ @SESSION.newApplicant->getState()}}</p>
@@ -28,38 +28,50 @@ Description: Page displays all the previous information the user has filled out-
           <p>Github: {{ @SESSION.newApplicant->getGitHub()}}</p>
           <p>Experience: {{ @SESSION.newApplicant->getExperience()}} years</p>
           <p>Willing To Relocate: {{ @SESSION.newApplicant->getRelocate()}}</p>
+          <!--<p>Mailing lists: {{ @SESSION.jobSelected}} , {{ @SESSION.industrySelected}}</p>
+-->
+          <!--Displaying the mailing list options if selected (received some pointers from dee to do check if and zack to call check mail-->
+          <check if="{{ @SESSION.newApplicant->getMail() != null }}">
+            <!--if true this message appears-->
+            <true>
+              <p>Mailing lists: {{ @SESSION.subscribedApplicant->getSelectionsJobs()}} , {{ @SESSION.subscribedApplicant->getSelectionsVerticals()}}</p>
+            </true>
+            <!--else, no mailing lists will appear-->
+            <false>
+            </false>
+          </check>
 
-            <!--<check if="{{ @SESSION['newApplicant'] instanceof Applicant_SubscribedToList }}">
-              &lt;!&ndash;if true this message appears&ndash;&gt;
-              <true>
-                <p>Mailing lists: {{ @SESSION.subscribedApplicant->getSelectionsJobs()}} , {{ @SESSION.subscribedApplicant->getSelectionsVerticals()}}</p>
-              </true>
-              &lt;!&ndash;else, no mailing lists will appear&ndash;&gt;
-              <false>
+          <!--<check if="{{ @SESSION.newApplicant->getMail() != null }}">
+            &lt;!&ndash;if true this message appears&ndash;&gt;
+            <true>
+              <p>Mailing lists: {{ @SESSION.jobSelected}} , {{ @SESSION.industrySelected}}</p>
+            </true>
+            &lt;!&ndash;else, no mailing lists will appear&ndash;&gt;
+            <false>
+            </false>
+          </check>-->
 
-              </false>
-            </check>-->
 
-            <p>Mailing lists: {{ @SESSION.jobSelected}} , {{ @SESSION.industrySelected}}</p>
-          </div>
+
         </div>
       </div>
-
-      <div class="container-fluid col-4">
-        <div class = "row">
-          <img class="img-responsive" src="images/profilePic.jpg" alt="profile admin pic" >
-          <h3>Summary</h3>
-          <p>{{ @SESSION.newApplicant->getBio()}}</p>
-        </div>
-      </div>
-
-      <div class="d-grid col-6 m-auto pt-4">
-        <button class="btn btn-primary btn-sm">Submit My Application!</button>
-      </div>
-
-
-
     </div>
+
+    <div class="container-fluid col-4">
+      <div class = "row">
+        <img class="img-responsive" src="images/profilePic.jpg" alt="profile admin pic" >
+        <h3>Summary</h3>
+        <p>{{ @SESSION.newApplicant->getBio()}}</p>
+      </div>
+    </div>
+
+    <div class="d-grid col-6 m-auto pt-4">
+      <button class="btn btn-primary btn-sm">Submit My Application!</button>
+    </div>
+
+
+
+  </div>
 
 </div>
 
