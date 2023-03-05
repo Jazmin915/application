@@ -12,18 +12,19 @@ class Applicant
     private $_experience;
     private $_relocate;
     private $_bio;
+    private $_mail;
 
     //constructor
-    function __construct($fname="", $lname="", $email="", $state="", $phone="", $github="", $experience="", $relocate="", $bio="" ){
+    function __construct($fname="", $lname="", $email="", $state="", $phone=""){
         $this->_fname = $fname;
         $this->_lname = $lname;
         $this->_email = $email;
         $this->_state = $state;
         $this->_phone = $phone;
-        $this->_github = $github;
-        $this->_experience = $experience;
-        $this->_relocate = $relocate;
-        $this->_bio = $bio;
+        //$this->_github = $github;
+        //$this->_experience = $experience;
+        //$this->_relocate = $relocate;
+        //$this->_bio = $bio;
     }
 
     /**
@@ -195,5 +196,23 @@ class Applicant
     public function setBio($bio)
     {
         $this->_bio = $bio;
+    }
+    /**
+     * getMail returns If the user selected a mailing order option
+     * @return string
+     */
+    public function getMail()
+    {
+        return $this->_mail;
+    }
+
+    /**
+     * getMail sets the mail option of the applicant
+     * @param $bio string
+     *
+     */
+    public function setMail($mailList)
+    {
+        $this->_mail = $mailList;
     }
 }

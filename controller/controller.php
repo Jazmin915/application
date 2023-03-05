@@ -92,6 +92,12 @@ class Controller
                     'Please enter a valid phone number');
             }
 
+            //checking if the user selected an option for mailing list
+            $mail = $_POST['mailList'];
+            if (isset($_POST['mailList'])){
+                $newApplicant->setMail($mail);
+            }
+
             //if there are no errors go to next page
             if (empty($this->_f3->get('errors'))){
                 //if there are no errors, put the newApplicant object into a session array
@@ -130,6 +136,7 @@ class Controller
                     'Please enter your bio');
             }
 
+            //what we had before
             /*$biography= $_POST['biography'];
             if(Validate::validExperienceBio($biography)){ //if valid meal then put it in the session array
                 //$newApplicant->setBio($biography);
@@ -149,8 +156,8 @@ class Controller
                     'experience is invalid');
             }
 
+            //validating github link
             $github = trim($_POST['github']);
-            //validating the name is all alphabet
             if(Validate::validGithub($github)) {
                 $_SESSION['newApplicant']->setGitHub($github);
             } //if its not valid create a variable to store the error message
@@ -160,8 +167,12 @@ class Controller
             }
 
             //if there are no errors go to next page
-            if (empty($this->_f3->get('errors'))){
+            //and redirecting to the mailing or summary page based on users
+            //selecting in the bio view page
+            if (empty($this->_f3->get('errors')) && ($_SESSION['newApplicant']->getMail() == 'mailList')){
                 $this->_f3->reroute('openings');
+            } elseif(empty($this->_f3->get('errors'))) {
+                $this->_f3->reroute('summary');
             }
 
         }
