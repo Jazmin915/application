@@ -3,21 +3,16 @@ Author: Jazmin Gonzalez
 Date: 1/20/23
 File: summary.html
 Description: Page displays all the previous information the user has filled out-->
-
 <include href="views/header.html"></include>
 <body>
-
 <div class="container-fluid px-0">
-
   <div class="row">
     <div class="col-12 content">
       <h1>Summary</h1>
       <hr class="mx-auto">
     </div>
   </div>
-
   <div class="container-fluid row">
-
     <div class="container-fluid col-4">
       <div class="row g-3 pt-3">
         <div class="border px-3 py-4">
@@ -28,23 +23,13 @@ Description: Page displays all the previous information the user has filled out-
           <p>Github: {{ @SESSION.newApplicant->getGitHub()}}</p>
           <p>Experience: {{ @SESSION.newApplicant->getExperience()}} years</p>
           <p>Willing To Relocate: {{ @SESSION.newApplicant->getRelocate()}}</p>
-          <!--<p>Mailing lists: {{ @SESSION.jobSelected}} , {{ @SESSION.industrySelected}}</p>
--->
-          <!--Displaying the mailing list options if selected (received some pointers from dee to do check if and zack to call check mail-->
-          <check if="{{ @SESSION.newApplicant->getMail() != null }}">
-            <!--if true this message appears-->
-            <true>
-              <p>Mailing lists: {{ @SESSION.subscribedApplicant->getSelectionsJobs()}} , {{ @SESSION.subscribedApplicant->getSelectionsVerticals()}}</p>
-            </true>
-            <!--else, no mailing lists will appear-->
-            <false>
-            </false>
-          </check>
+          <p>Mailing lists: {{ @SESSION.jobSelected}} , {{ @SESSION.industrySelected}}</p>
 
+          <!--Recieved pointers for check if from dee and zack-->
           <!--<check if="{{ @SESSION.newApplicant->getMail() != null }}">
             &lt;!&ndash;if true this message appears&ndash;&gt;
             <true>
-              <p>Mailing lists: {{ @SESSION.jobSelected}} , {{ @SESSION.industrySelected}}</p>
+              <p>Mailing lists: {{ @SESSION.subscribedApplicant->getSelectionsJobs()}} , {{ @SESSION.subscribedApplicant->getSelectionsVerticals()}}</p>
             </true>
             &lt;!&ndash;else, no mailing lists will appear&ndash;&gt;
             <false>
@@ -52,11 +37,9 @@ Description: Page displays all the previous information the user has filled out-
           </check>-->
 
 
-
         </div>
       </div>
     </div>
-
     <div class="container-fluid col-4">
       <div class = "row">
         <img class="img-responsive" src="images/profilePic.jpg" alt="profile admin pic" >
@@ -64,20 +47,12 @@ Description: Page displays all the previous information the user has filled out-
         <p>{{ @SESSION.newApplicant->getBio()}}</p>
       </div>
     </div>
-
     <div class="d-grid col-6 m-auto pt-4">
       <button class="btn btn-primary btn-sm">Submit My Application!</button>
     </div>
-
-
-
   </div>
-
 </div>
-
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-
 </body>
 </html>

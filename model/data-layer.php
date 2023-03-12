@@ -1,7 +1,62 @@
 <?php
+require_once ($_SERVER['DOCUMENT_ROOT'].'/../pdo-config.php');
 
 class DataLayer
 {
+    //Database connection object
+
+    private $_dbh;
+
+    function __construct()
+    {
+        try {
+            //Instantiate a PDO object by using the PDO constructor
+            $this->_dbh = new PDO(DB_DRIVER, USERNAME, PASSWORD);
+            //echo "Successful!";
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    function insertApplicant($appObj)
+    {
+        //1. Define the query
+        $sql = "INSERT INTO applicant (fname, lname, email, phone, github, experience, relocate, bio, mailing_lists_signup, mailing_list_subsriptions)
+                VALUES (:fname, :lname, :email, :phone, :github, :experience, :relocate, :bio, :mailing_lists_signup, :mailing_list_subsriptions)";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+        $fname = $appObj->getFname();
+        $lname = $appObj->getLname();
+        $email = $appObj->getEmail();
+        $phone = $appObj->getPhone();
+        $git = $appObj->getGitHub();
+        $experience = $appObj->getExperience();
+        $relocate = $appObj->getRelocate();
+        $bio = $appObj->getBio();
+        $mail = "";
+        $subscriptions = "";
+        $statement->bindParam(':fname', $fname);
+        $statement->bindParam(':lname', $lname);
+        $statement->bindParam(':email', $email);
+        $statement->bindParam(':phone', $phone);
+        $statement->bindParam(':github', $git);
+        $statement->bindParam(':experience', $experience);
+        $statement->bindParam(':relocate', $relocate);
+        $statement->bindParam(':bio', $bio);
+        $statement->bindParam(':mailing_lists_signup', $mail);
+        $statement->bindParam(':mailing_list_subsriptions', $subscriptions);
+
+        //4. Execute the query
+        $statement->execute();
+
+        //5. Process the results
+    }
+
+
     /**
      * this function returns years in the experience page in an array
      * @return string[]
@@ -20,12 +75,6 @@ class DataLayer
         return array("Yes", "No", "Maybe");
     }
 
-    //checkboxes on Job Opening page
-    /*function getJob(){
-        return array("JS"=>"JavaScript", "Html"=>"HTML", "php"=>"PHP", "css"=>"CSS",
-                    "java"=>"Java", "react"=>"ReactJS", "python"=>"Python", "node"=>"NodeJS");
-    }*/
-
     /**
      * this function returns jobs in the mailing list page in an array
      * @return string[]
@@ -34,11 +83,6 @@ class DataLayer
         return array("JavaScript", "HTML", "PHP", "CSS",
             "Java", "ReactJS", "Python", "NodeJS");
     }
-
-    /*function getIndustry(){
-        return array("saas"=>"SaaS", "indTech"=>"Industrial Tech", "htech"=>"Health Tech",
-                        "cyber"=>"Cyber Security", "ag"=>"Ag Tech", "hit"=>"Hit Tech++");
-    }*/
 
     /**
      * this function returns verticals in the mailing list page in an array

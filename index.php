@@ -8,6 +8,10 @@ error_reporting(E_ALL);
 require_once('vendor/autoload.php');
 require_once('model/data-layer.php');
 
+//testing my DataLayer class
+/*$dataLayer = new DataLayer();
+$dataLayer->saveApplicant();*/
+
 //Start a session
 session_start();
 

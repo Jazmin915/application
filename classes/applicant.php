@@ -21,10 +21,7 @@ class Applicant
         $this->_email = $email;
         $this->_state = $state;
         $this->_phone = $phone;
-        //$this->_github = $github;
-        //$this->_experience = $experience;
-        //$this->_relocate = $relocate;
-        //$this->_bio = $bio;
+
     }
 
     /**
