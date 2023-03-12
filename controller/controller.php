@@ -276,6 +276,10 @@ class Controller
      */
     function summary()
     {
+        //write to a database
+        $id = $GLOBALS['dataLayer']->insertApplicant($_SESSION['newApplicant']);
+        echo "Order ID: $id";
+
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/summary.html");
@@ -286,6 +290,11 @@ class Controller
 
     function admin()
     {
+        //Get the data from the model
+        $applicants = $GLOBALS['dataLayer']->GetApplicants();
+        //put into the fat free hive
+        $this->_f3->set('applicants', $applicants);
+
         //Instantiate a view
         $view = new Template();
         echo $view->render("views/admin.html");

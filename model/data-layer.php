@@ -19,11 +19,16 @@ class DataLayer
         }
     }
 
+    /**
+     * This function inserts all of our data into the database
+     * @param $appObj
+     * @return false|string
+     */
     function insertApplicant($appObj)
     {
         //1. Define the query
-        $sql = "INSERT INTO applicant (fname, lname, email, phone, github, experience, relocate, bio, mailing_lists_signup, mailing_list_subsriptions, image)
-                VALUES (:fname, :lname, :email, :phone, :github, :experience, :relocate, :bio, :mailing_lists_signup, :mailing_list_subsriptions, :image)";
+        $sql = "INSERT INTO applicant (fname, lname, email, phone, github, experience, relocate, bio, mailing_lists_signup, mailing_list_subsriptions)
+                VALUES (:fname, :lname, :email, :phone, :github, :experience, :relocate, :bio, :mailing_lists_signup, :mailing_list_subsriptions)";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
@@ -37,9 +42,9 @@ class DataLayer
         $experience = $appObj->getExperience();
         $relocate = $appObj->getRelocate();
         $bio = $appObj->getBio();
-        $mail = "";
+        $mail = $appObj->getMail();
         $subscriptions = "";
-        $img = "";
+        /*$img = "";*/
         $statement->bindParam(':fname', $fname);
         $statement->bindParam(':lname', $lname);
         $statement->bindParam(':email', $email);
@@ -50,13 +55,35 @@ class DataLayer
         $statement->bindParam(':bio', $bio);
         $statement->bindParam(':mailing_lists_signup', $mail);
         $statement->bindParam(':mailing_list_subsriptions', $subscriptions);
-        $statement->bindParam(':image', $img);
-
+        /*$statement->bindParam(':image', $img);*/
 
         //4. Execute the query
         $statement->execute();
 
         //5. Process the results
+        $id = $this->_dbh->lastInsertId();
+        return $id;
+    }
+
+    /**
+     * This function will get all of our data from the database
+     * @return void
+     */
+    function getApplicants()
+    {
+        //1. Define the query
+        $sql = "SELECT * FROM applicant";
+
+        //2. Prepare the statement
+        $statement = $this->_dbh->prepare($sql);
+
+        //3. Bind the parameters
+
+        //4. Execute the query
+        $statement->execute();
+
+        //5. Process the results
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 
 

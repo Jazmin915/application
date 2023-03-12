@@ -28,6 +28,8 @@ $f3 = Base::instance();
 
 //Instantiate a Controller object
 $con = new Controller($f3);
+//Instantiate a DataLayer object
+$dataLayer = new DataLayer();
 
 // Define a default route ("home page" for 328/application)
 //this is what the user sees when they go to the main directory
