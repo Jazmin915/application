@@ -57,10 +57,17 @@ $f3->route('GET|POST /openings', function ($f3) {
 
 });
 
-// Define route ("job openings page" for 328/application/summary)
+// Define route ("summary" for 328/application/summary)
 $f3->route('GET /summary', function () {
 
     $GLOBALS['con']->summary();
+
+});
+
+// Define route ("admin" for 328/application/admin)
+$f3->route('GET /admin', function () {
+
+    $GLOBALS['con']->admin();
 
 });
 

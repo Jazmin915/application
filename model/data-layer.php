@@ -22,8 +22,8 @@ class DataLayer
     function insertApplicant($appObj)
     {
         //1. Define the query
-        $sql = "INSERT INTO applicant (fname, lname, email, phone, github, experience, relocate, bio, mailing_lists_signup, mailing_list_subsriptions)
-                VALUES (:fname, :lname, :email, :phone, :github, :experience, :relocate, :bio, :mailing_lists_signup, :mailing_list_subsriptions)";
+        $sql = "INSERT INTO applicant (fname, lname, email, phone, github, experience, relocate, bio, mailing_lists_signup, mailing_list_subsriptions, image)
+                VALUES (:fname, :lname, :email, :phone, :github, :experience, :relocate, :bio, :mailing_lists_signup, :mailing_list_subsriptions, :image)";
 
         //2. Prepare the statement
         $statement = $this->_dbh->prepare($sql);
@@ -39,6 +39,7 @@ class DataLayer
         $bio = $appObj->getBio();
         $mail = "";
         $subscriptions = "";
+        $img = "";
         $statement->bindParam(':fname', $fname);
         $statement->bindParam(':lname', $lname);
         $statement->bindParam(':email', $email);
@@ -49,6 +50,8 @@ class DataLayer
         $statement->bindParam(':bio', $bio);
         $statement->bindParam(':mailing_lists_signup', $mail);
         $statement->bindParam(':mailing_list_subsriptions', $subscriptions);
+        $statement->bindParam(':image', $img);
+
 
         //4. Execute the query
         $statement->execute();

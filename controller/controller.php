@@ -283,4 +283,11 @@ class Controller
         //destroy the session
         session_destroy();
     }
+
+    function admin()
+    {
+        //Instantiate a view
+        $view = new Template();
+        echo $view->render("views/admin.html");
+    }
 }
